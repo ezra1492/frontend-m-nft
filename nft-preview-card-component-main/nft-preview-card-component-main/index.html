@@ -11,26 +11,35 @@
       sizes="32x32"
       href="./images/favicon-32x32.png"
     />
-
+    <link rel="stylesheet" href="style.css" />
     <title>Frontend Mentor | NFT preview card component</title>
   </head>
   <body>
     <main>
-      <article>
-        <header>
-          <img src="images/image-equilibrium.jpg" alt="" />
+      <article class="nft-card">
+        <header class="nft-card__header">
+          <img
+            src="images/image-equilibrium.jpg"
+            alt="Equilibrium NFT: A semitransparent litmus cuboid, balancing on its vertex"
+          />
         </header>
-        <section>
-          <h1>Equilibrium #3429</h1>
+        <section class="nft-card__content">
+          <h2>Equilibrium #3429</h2>
           <p>Our Equilibrium collection promotes balance and calm.</p>
 
-          <span>0.041 ETH</span>
-          <span>3 days left</span>
+          <div class="nft-card__metadata">
+            <data value="0.041">0.041 ETH</data>
+            <time>3 days left</time>
+          </div>
         </section>
 
-        <section>
+        <footer class="nft-card__footer">
+          <img
+            src="images/image-avatar.png"
+            alt="Jules' face half-lit and looking upward, with dark-brown bangs covering his forehead, while the eye cast in shadow features an iridescent light ray mirroring the cuboid refraction"
+          />
           <p>Creation of Jules Wyvern</p>
-        </section>
+        </footer>
       </article>
     </main>
 
