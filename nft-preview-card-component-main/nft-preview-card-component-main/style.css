@@ -1,3 +1,7 @@
+/* ============================
+BOX MODEL & DESIGN TOKENS
+=============================== */
+
 *,
 *::before,
 *::after {
@@ -24,26 +28,29 @@
   --clr-b900: hsl(216, 50%, 16%);
   --clr-b800: hsl(215, 32%, 27%);
   --clr-white: hsl(0, 0%, 100%);
-  --clr-attr: hsl(228, 45%, 44%);
 }
 
-/* los estilos van en la hoja de estilos (stylesheet)  */
+/* ==========
+BODY & LAYOUT
+============= */
+
+/* HTML styles: credits  */
 .attribution {
   font-size: 0.6875rem;
   text-align: center;
   color: var(--clr-b500);
-  position: absolute;
-  bottom: 0;
+  position: absolute; /* change the normal gravitational pull, it puts it on it's own layer */
+  bottom: 0; /* it pushes it to the bottom of the screen */
+  padding-bottom: 4px;
 }
 .attribution a {
   color: var(--clr-white);
 }
 
-/*  */
 body {
   background: var(--clr-b950);
   font-family: "Outfit", sans-serif;
-  height: 100vh;
+  height: 100vh; /* it forces the browser to show 100% of the Equilibrium card and FM/mine credits */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -55,17 +62,56 @@ body {
   padding: 24px;
   border-radius: 15px;
   display: flex;
-  flex-direction: column;
+  flex-direction: column; /* stack  the elements on top each other */
 }
 
 .nft-card__hero-img {
-  width: 100%; /* 100% del ancho del contenedor */
-  height: auto; /* to prevent deformations */
-  display: block; /* to force it to use all available space, removing the text baseline (the descender space for q p j y) */
+  width: 100%; /* covers 100% available space */
+  height: auto; /* prevent img deformations */
+  display: block; /* force it to use all available space, removing the text baseline (the descender space for q p j y) */
   border-radius: 8px;
 }
 
-.nft-card__content h2 {
+/* =================
+MOUSE INTERACTIONS ↓
+==================== */
+.nft-card__header {
+  position: relative; /* anchors the overlay to the img container */
+  cursor: pointer;
+}
+
+.nft-card__overlay {
+  position: absolute;
+  background: hsla(178, 100%, 50%, 0.5);
+  top: 0; /* "TRouBLe" stretches this layer, covering the whole header area */
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex; /* to center the eye img */
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  opacity: 0; /* trsnsparent inactive overlay */
+}
+
+.nft-card__header:hover .nft-card__overlay {
+  opacity: 1; /* when hover over the Equilibrium img, it stops being transparent and you can actually see the eye and the cian background */
+}
+
+/* when hover over the header (parent) ─which contains the Equilibrium img/overlay─ look in the sibling branch section (__content) for its child (__title) and change its color to cyan */
+.nft-card__header:hover ~ .nft-card__content .nft-card__titile {
+  color: var(--clr-c400);
+}
+
+/* when hovering over the header branch, trigger the overlay behavior AND go down the sibiling branch footer and look for creators-link and… */
+.nft-card__header:hover ~ .nft-card__footer .ntf-card__creators-link {
+  color: var(--clr-c400);
+}
+/* =================
+MOUSE INTERACTIONS ↑
+==================== */
+
+.nft-card__titile {
   color: var(--clr-white);
   font-size: var(--fs-l);
   font-weight: var(--fw-bold);
@@ -86,14 +132,12 @@ body {
 .nft-card__metadata {
   font-size: var(--fs-s);
   display: flex;
-  /* it pushes data and time elements against the card padding */
-  justify-content: space-between;
+  justify-content: space-between; /* it pushes data and time elements against the card padding */
 }
 
 .nft-card__metadata data,
-time {
-  display: inline-flex;
-  /* it removes normal gravity within  line, align-items helps me to center the text and the img across the same axis */
+.nft-card__metadata time {
+  display: inline-flex; /* it removes normal gravity within  line, align-items helps me to center the text and the img across the same axis */
   align-items: center;
   gap: 8px;
 }

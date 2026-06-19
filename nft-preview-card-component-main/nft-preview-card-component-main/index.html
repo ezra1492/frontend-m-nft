@@ -24,44 +24,61 @@
   </head>
   <body>
     <main>
+      <!-- the outermost layers: the larger main branch and the credit's (Frontend and me) shorter footer branch -->
       <article class="nft-card">
+        <!-- main branches into three siblings: article, section and the creator's footer -->
         <header class="nft-card__header">
+          <!-- holds the Equilibrium img and the overlay trigger -->
           <img
             class="nft-card__hero-img"
             src="images/image-equilibrium.jpg"
             alt="Equilibrium NFT: A semitransparent litmus cuboid, balancing on its vertex"
           />
+
+          <div class="nft-card__overlay">
+            <img
+              src="images/icon-view.svg"
+              alt="eye icon at the very center of the Equilibrium cuboid"
+            />
+          </div>
         </header>
+
         <section class="nft-card__content">
-          <h2>Equilibrium #3429</h2>
+          <!-- middle branch, holds the title, description text and relevant information like price and a sales countdown -->
+          <h2 class="nft-card__titile">Equilibrium #3429</h2>
           <p>Our Equilibrium collection promotes balance and calm.</p>
 
           <div class="nft-card__metadata">
             <data class="nft-card__price" value="0.041">
+              <!-- value it's an important attribute worth the time adding, it optimazes browser and assist readability  -->
               <img src="images/icon-ethereum.svg" alt="ethereum icon" />0.041
               ETH
             </data>
 
-            <time class="nft-card__countdown">
+            <time class="nft-card__countdown" datetime="P3D">
+              <!-- this is an important browser helper, an automated calendar assistant will be able to scan it now and add the event -->
               <img src="images/icon-clock.svg" alt="clock icon" />3 days left
             </time>
           </div>
         </section>
 
         <footer class="nft-card__footer">
+          <!-- third branch, creator's footer -->
           <img
             class="nft-card__avatar"
             src="images/image-avatar.png"
             alt="Jules' face half-lit and looking upward, with dark-brown bangs covering his forehead, while the eye cast in shadow features an iridescent light ray mirroring the cuboid refraction"
           />
           <p class="nft-card__creator">
-            Creation of <a href="#">Jules Wyvern</a>
+            Creation of
+            <a class="ntf-card__creators-link" href="#">Jules Wyvern</a>
           </p>
         </footer>
       </article>
     </main>
 
     <footer class="attribution">
+      <!-- this is the second short branch -->
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
