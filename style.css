@@ -51,7 +51,7 @@ BODY & LAYOUT
 body {
   background: var(--clr-b950);
   font-family: "Outfit", sans-serif;
-  height: 100vh; /* it forces the browser to show 100% of the Equilibrium card and FM/mine credits */
+  min-height: 100vh; /* it forces the browser to show 100% of the Equilibrium card and FM/mine credits */
   display: flex;
   flex-direction: column; /* it organizes the two main  branches, its children vertically */
   align-items: center; /* flex-direction column flipped the axis, now it aligns its children left to right */
@@ -62,7 +62,7 @@ main {
 }
 
 .nft-card {
-  width: 21.875rem;
+  width: min(21.875rem, 90vw);
   background: var(--clr-b900);
   padding: 1.5rem;
   border-radius: 0.9375rem;
@@ -80,9 +80,11 @@ main {
 /* =================
 MOUSE INTERACTIONS ↓
 ==================== */
-.nft-card__header {
+
+.nft-card__img-link {
   position: relative; /* anchors the overlay to the img container */
   cursor: pointer;
+  display: block;
 }
 
 .nft-card__overlay {
@@ -99,19 +101,32 @@ MOUSE INTERACTIONS ↓
   opacity: 0; /* trsnsparent inactive overlay */
 }
 
-.nft-card__header:hover .nft-card__overlay {
-  opacity: 1; /* when hover over the Equilibrium img, it stops being transparent and you can actually see the eye and the cian background */
+.nft-card__img-link:hover .nft-card__overlay,
+.nft-card__img-link:focus-visible .nft-card__overlay {
+  opacity: 1; /* when hover over (or the Keyboard Focuses on) the Equilibrium img, it stops being transparent and you can actually see the eye and the cyan background */
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease;
 }
 
-/* when hover over the header (parent) ─which contains the Equilibrium img/overlay─ look in the sibling branch section (__content) for its child (__title) and change its color to cyan */
+/* when hover over (or the Keyboard Focuses on) the header (parent) ─which contains the Equilibrium img/overlay─ look in the sibling branch section (__content) for its child (__title) and change its color to cyan */
+.nft-card__header:focus-within ~ .nft-card__content .nft-card__title,
 .nft-card__header:hover ~ .nft-card__content .nft-card__title {
   color: var(--clr-c400);
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease;
 }
 
-/* when hovering over the header branch, trigger the overlay behavior AND go down the sibiling branch footer and look for creators-link and… */
-.nft-card__header:hover ~ .nft-card__footer .ntf-card__creators-link {
+/* when hovering over (or the Keyboard Focuses on) the header branch, trigger the overlay behavior AND go down the sibiling branch footer and look for creators-link and change its color to cyan */
+.nft-card__header:focus-within ~ .nft-card__footer .nft-card__creators-link,
+.nft-card__header:hover ~ .nft-card__footer .nft-card__creators-link {
   color: var(--clr-c400);
+  transition:
+    opacity 0.3s ease,
+    color 0.3s ease;
 }
+
 /* =================
 MOUSE INTERACTIONS ↑
 ==================== */
